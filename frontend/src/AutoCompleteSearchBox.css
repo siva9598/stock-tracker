@@ -1,0 +1,23 @@
+.input-section {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.input-section .AutoCompleteSearchBox {
+  height: 4%;
+  width: 15%;
+  padding-right: 5%;
+}
+
+.input-section .AutoCompleteSearchBox input {
+  height: 4%;
+  width: 100%;
+  border: 1px solid gray;
+}
+
+.input-section .search-button {
+  margin-left: 2%;
+  height: 4%;
+}
