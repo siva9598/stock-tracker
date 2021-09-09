@@ -1,0 +1,16 @@
+.recommendation {
+  padding-left: 20%;
+  width: 10%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.recommendation-heading {
+  display: flex;
+  justify-content: center;
+}
+.recommendation .guage-heading {
+  display: flex;
+  justify-content: center;
+}
