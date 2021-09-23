@@ -2,8 +2,12 @@ from flask import Flask
 from flask import abort,request, jsonify
 import yfinance as yf
 from tradingview_ta import TA_Handler, Interval, Exchange
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 @app.route('/chart',methods=['GET'])
 def chart():
 	if((request.args.get('symbol') is None) or (request.args.get('start_date') is None) or (request.args.get('end_date') is None) or (request.args.get('interval') is None)):
