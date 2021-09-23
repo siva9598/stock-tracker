@@ -21,11 +21,13 @@ const AutoCompleteSearchBox = () => {
   const onTextChanged = (e) => {
     const value = e.target.value;
     let suggestions = [];
+    let suggestions_top_values;
     if (value.length > 0) {
       const regex = new RegExp(`^${value}`, "i");
       suggestions = items.sort().filter((v) => regex.test(v));
+      suggestions_top_values = suggestions.slice(0, 5);
     }
-    setSuggestions(suggestions);
+    setSuggestions(suggestions_top_values);
     setText(value);
   };
   const setSearchDates = () => {
