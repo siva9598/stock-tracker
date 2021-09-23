@@ -5,11 +5,13 @@ import DateContext from "./Context/DateContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DateHelper from "./Helper/DateHelper";
+import { symbols } from "./StockSymbolConstant";
 //import "bootstrap/dist/css/bootstrap.css";
 import { Button, ListGroup, ListGroupItem, Input } from "reactstrap";
 
 const AutoCompleteSearchBox = () => {
-  const items = ["AAPL", "MSFT", "GOOG", "AMZN", "FB"];
+  const items = symbols;
+
   const [suggestions, setSuggestions] = useState([]);
 
   const [stockSymbol, setstockSymbol] = useContext(StockContext);
