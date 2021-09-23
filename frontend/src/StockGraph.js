@@ -76,7 +76,7 @@ const StockGraph = () => {
       options={stockChartData.options}
       series={stockChartData.series}
       type="candlestick"
-      height={500}
+      height={350}
     />
   );
 };

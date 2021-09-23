@@ -1,3 +1,18 @@
+.container {
+  /* margin-top: 1%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: aquamarine;
+  height: 100vh;
+}
+.container .page-title {
+  text-align: center;
+}
+/* .elements {
+  margin-bottom: 10%;
+} */
+
 .recommendation {
   width: 10%;
   height: 10%;

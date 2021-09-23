@@ -5,11 +5,13 @@ import DateContext from "./Context/DateContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DateHelper from "./Helper/DateHelper";
+import { symbols } from "./StockSymbolConstant";
 //import "bootstrap/dist/css/bootstrap.css";
 import { Button, ListGroup, ListGroupItem, Input } from "reactstrap";
 
 const AutoCompleteSearchBox = () => {
-  const items = ["AAPL", "MSFT", "GOOG", "AMZN", "FB"];
+  const items = symbols;
+
   const [suggestions, setSuggestions] = useState([]);
 
   const [stockSymbol, setstockSymbol] = useContext(StockContext);
@@ -21,11 +23,13 @@ const AutoCompleteSearchBox = () => {
   const onTextChanged = (e) => {
     const value = e.target.value;
     let suggestions = [];
+    let suggestions_top_values;
     if (value.length > 0) {
       const regex = new RegExp(`^${value}`, "i");
       suggestions = items.sort().filter((v) => regex.test(v));
+      suggestions_top_values = suggestions.slice(0, 5);
     }
-    setSuggestions(suggestions);
+    setSuggestions(suggestions_top_values);
     setText(value);
   };
   const setSearchDates = () => {
@@ -62,17 +66,28 @@ const AutoCompleteSearchBox = () => {
         <Input value={text} onChange={onTextChanged} type="text" />
         {renderSuggestions()}
       </div>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => {
-          setStartDate(date);
-        }}
-      />
-      <DatePicker
-        selected={endDate}
-        onChange={(date) => setEndDate(date)}
-        minDate={startDate}
-      />
+      <div className="date">
+        <p>From</p>
+        <DatePicker
+          className="date-box"
+          selected={startDate}
+          onChange={(date) => {
+            setStartDate(date);
+          }}
+        />
+      </div>
+      <div className="date">
+        <p>To</p>
+        <span>
+          <DatePicker
+            className="date-box"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            minDate={startDate}
+          />
+        </span>
+      </div>
+
       <Button
         color="success"
         size="sm"

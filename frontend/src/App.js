@@ -10,7 +10,7 @@ import "./App.css";
 const App = () => {
   const StockHook = useState("AAPL");
   let currentStartDate = new Date();
-  currentStartDate.setMonth(currentStartDate.getMonth() - 3);
+  currentStartDate.setMonth(currentStartDate.getMonth() - 1);
   let startDate = DateHelper(currentStartDate);
   let currentEndDate = new Date();
   let endDate = DateHelper(currentEndDate);
@@ -29,9 +29,12 @@ const App = () => {
   return (
     <StockContext.Provider value={StockHook}>
       <DateContext.Provider value={DateHook}>
-        <AutoCompleteSearchBox />
-        <StockGraph />
-        <Recommendation className="recommendation" />
+        <div class="container">
+          <h1 className="page-title">Stock Tracker</h1>
+          <AutoCompleteSearchBox class="elements" className="search-box" />
+          <StockGraph class="elements" className="graph" />
+          <Recommendation class="elements" className="recommendation" />
+        </div>
       </DateContext.Provider>
     </StockContext.Provider>
   );
