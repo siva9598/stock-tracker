@@ -62,17 +62,28 @@ const AutoCompleteSearchBox = () => {
         <Input value={text} onChange={onTextChanged} type="text" />
         {renderSuggestions()}
       </div>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => {
-          setStartDate(date);
-        }}
-      />
-      <DatePicker
-        selected={endDate}
-        onChange={(date) => setEndDate(date)}
-        minDate={startDate}
-      />
+      <div className="date">
+        <p>From</p>
+        <DatePicker
+          className="date-box"
+          selected={startDate}
+          onChange={(date) => {
+            setStartDate(date);
+          }}
+        />
+      </div>
+      <div className="date">
+        <p>To</p>
+        <span>
+          <DatePicker
+            className="date-box"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            minDate={startDate}
+          />
+        </span>
+      </div>
+
       <Button
         color="success"
         size="sm"
